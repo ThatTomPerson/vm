@@ -1,7 +1,16 @@
 package main
 
-import "log"
+import (
+	"io/ioutil"
+
+	"github.com/davecgh/go-spew/spew"
+	"github.com/ThatTomPerson/vm/pkg/compose/loader"
+)
 
 func main() {
-	log.Println("vm")
+	b, _ := ioutil.ReadFile("docker-compose.yml")
+
+	c, _ := loader.ParseYAML(b)
+
+	spew.Dump(c)
 }
